@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+<h1 class="text-center">
+    {% if editMode %}
+        Modifier un Article
+    {% else %}
+        Créer un Article
+    {% endif %}
+</h1>
+
+<!--Debut du formulaire-->
+{{ form_start(formArticle) }}
+
+{{ form_row(formArticle.title,{'attr':{'placeholder':"Titre de l'article"} }) }}
+
+{{ form_row(formArticle.content, {'attr': {'placeholder': "contenu de l'article"}}) }}
+{{ form_row(formArticle.image, {'attr': {'placeholder': "URL image"}}) }}
+
+<!-- Bouton avec condition d'affichage -->
+<button class="btn btn-success" type="submit">
+    {% if editMode %}
+        Enregistrer les modification
+    {% else %}
+        Ajouter l'article
+    {% endif %}
+</button>
+
+<!-- fin du formulaire -->
+{{ form_end(formArticle) }}
+
+{% endblock %}
